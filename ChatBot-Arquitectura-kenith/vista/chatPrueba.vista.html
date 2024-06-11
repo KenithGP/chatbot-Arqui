@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home/css/chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Chat</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="historial-container">
+            <div class="text">
+                <h1><span id="name-course"></span></h1>
+            </div>
+
+        </div>
+    <div class="chat-container">
+        <div class="header">
+            <div class="img">
+              <img src="/home/img/bot.png"  />
+            </div>
+            <div class="right">
+                <div class="name">ChatBot</div>
+                <div class="status">Active</div>
+              </div>
+            </div>
+        <div id="chat-window">
+            <div class="message">
+                <div
+                    class="bot-message"
+                    id="message1"
+                    ref={botmessage}
+                ></div>
+                <div
+                    class="human-message"
+                    id="message2"
+                    ref={humanMessage}
+                ></div>
+            </div>
+        </div>
+        <form id="message-form">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje..." >
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+    
+    <script src="/home/js/chat.controlador.js"></script>
+</body>
+</html>

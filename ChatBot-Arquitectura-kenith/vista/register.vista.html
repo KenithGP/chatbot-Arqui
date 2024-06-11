@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/home/css/register.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container-form">
+        <div class="information">
+            <div class="info-childs">
+                <h2> ¡Bienvenido!</h2>
+                <p> Únete y disfruta explorando tus conocimientos con tu amigo inteligente</p>
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-child">
+                <h2>Crea una cuenta</h2>
+                <p> Coloca tus datos</p>
+                <form id="registerForm">
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Nombre" id="nombres" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Apellido" id="apellidos" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-calendar'></i>
+                        <input type="date" placeholder="Fecha de Nacimiento" id="dob" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-book-bookmark'></i>
+                        <input type="text" placeholder="Grado" id="grade" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" placeholder="example@gmail.com" id="email" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-pass'></i>
+                        <input type="password" placeholder="contraseña" id="password" required>
+                    </label>
+                    <p class="gender-title">Género:</p>
+                        <label class="gender-label" id="male-label">
+                            <i class='bx bx-gender-male'></i>
+                            <input type="radio" name="gender" value="male" required>
+                            <span>Masculino</span>
+                        </label>
+                        <label class="gender-label" id="female-label">
+                            <i class='bx bx-gender-female'></i>
+                            <input type="radio" name="gender" value="female" required>
+                            <span>Femenino</span>
+                        </label>
+                        <label class="gender-label" id="prefer-not-label">
+                            <input type="radio" name="gender" value="prefer_not" required>
+                            <span>Prefiero no decirlo</span>
+                        </label>
+                    <input type="submit" value="Registrarse">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/home/js/register.controler.js"></script>
+</body>
+</html>

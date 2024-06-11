@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/home/css/chat.css">
+</head>
+<body>
+    <div class="App" onLoad={checkStatus}>
+        <div class="wrapper">
+          <div class="content">
+            <div class="header">
+              <div class="img">
+                <img src="/home/img/bot.png" alt="" />
+              </div>
+              <div class="right">
+                <div class="name">ChatBot</div>
+                <div class="status">Active</div>
+              </div>
+            </div>
+            <div class="main">
+              <div class="main_content">
+                <div class="messages">
+                  <div
+                    class="bot-message"
+                    id="message1"
+                    ref={botmessage}
+                  ></div>
+                  <div
+                    class="human-message"
+                    id="message2"
+                    ref={humanMessage}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="btm">
+                <div class="input">
+                  <input
+                    type="text"
+                    id="input"
+                    placeholder="Enter your message"
+                    ref={input}
+                  />
+                </div>
+                <div class="btn">
+                  <button onClick={handleInput}>
+                    <i class="fas fa-paper-plane"></i>Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

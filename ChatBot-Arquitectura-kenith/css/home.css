@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    background: url('/home/img/FONDO.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: rgba(3, 21, 58, 0.6); /* Fondo de color con transparencia */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex; /* Para alinear ícono y texto horizontalmente */
+    align-items: center; /* Para centrar verticalmente */
+}
+
+.logo .icon {
+    width: 30px; /* Ancho deseado del ícono */
+    height: 30px; /* Altura deseada del ícono */
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    background-image: url('/home/img/icon.png'); /* Ruta de la imagen del ícono */
+    background-size: cover;
+}
+
+.welcome {
+    position: absolute;
+    top: 50%;
+    left: 25%; /* Ajusta este valor para mover más a la derecha */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #000000;
+
+}
+
+    .welcome h2 {
+        background-color: rgb(255, 255, 255,0.8);
+        border-radius: 20px;
+        font-size: 36px;
+        margin-bottom: 20px;
+        padding: 16px;
+    }
+
+    .welcome img {
+        width: 250px;
+        height: auto;
+            
+    }
+
+.textinfo {
+    position: absolute;
+    top: 50%;
+    left: 70%; 
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #000000;
+    background-color: rgb(255, 255, 255,0.8);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+    .textinfo h3 {
+        font-size: 18px; /* Cambia el tamaño de la fuente según sea necesario */
+        margin-bottom: 20px;
+        font-family: cursive; /* Elimina la negrita */
+    }
+
+.navbar a {
+    font-size: 18px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+}

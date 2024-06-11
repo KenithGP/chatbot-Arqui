@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://img.freepik.com/vector-premium/dia-nino-dibujado-mano-fondo-espanol_23-2149299342.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo con transparencia */
+}
+
+.container {
+    display: flex;
+    width: 900px;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(240, 208, 255, 0.8); /* Color de fondo del contenedor con transparencia */
+}
+
+.left {
+    flex: 1;
+    background-color: rgba(242, 100, 25, 0.8); /* Color de fondo del lado izquierdo con transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.right {
+    flex: 1;
+    padding: 50px;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #3f16af;
+    text-align: center;
+}
+
+.input-container {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 0px solid #3f16af;
+}
+
+.input-container i {
+    font-size: 24px;
+    color: #3f16af;
+    margin-right: 15px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-bottom: 3px solid #3f16af;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3f16af;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5d2dc4;
+}
+
+p {
+    margin-top: 30px;
+    text-align: center;
+    color: #3f16af;
+    font-size: 20px;
+}
+
+a {
+    color: #3f16af;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
