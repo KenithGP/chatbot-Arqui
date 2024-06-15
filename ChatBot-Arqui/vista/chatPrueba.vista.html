@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/home/css/chat.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Chat</title>
 </head>
 
@@ -13,6 +14,9 @@
         <div class="historial-container">
             <div class="text">
                 <h1><span id="name-course"></span></h1>
+                <div id="chat-history">
+                    <!-- Historial del chat se mostrará aquí -->
+                </div>
             </div>
 
         </div>
@@ -27,21 +31,13 @@
               </div>
             </div>
         <div id="chat-window">
-            <div class="message">
-                <div
-                    class="bot-message"
-                    id="message1"
-                    ref={botmessage}
-                ></div>
-                <div
-                    class="human-message"
-                    id="message2"
-                    ref={humanMessage}
-                ></div>
-            </div>
+            
         </div>
         <form id="message-form">
+            <i class='bx bx-paperclip' onClick="document.getElementById('imageInput').click()"></i>
+            <input type="file"id="imageInput" accept="image/*" />
             <input type="text" id="user-input" placeholder="Escribe tu mensaje..." >
+            
             <button type="submit">Enviar</button>
         </form>
     </div>

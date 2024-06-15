@@ -81,3 +81,35 @@ document.addEventListener('DOMContentLoaded', async function () {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 });
+
+/* document.addEventListener('paste', (event) => {
+    const items = event.clipboardData.items;
+    for (let item of items) {
+        if (item.kind === 'file' && item.type.startsWith('image/')) {
+            const file = item.getAsFile();
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/send_image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Image pasted and uploaded:', data);
+                // Procesar la respuesta del servidor
+                // Añadir imagen al historial
+                const chatHistory = document.getElementById('chat-history');
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '100%';
+                img.style.display = 'block';
+                img.style.margin = '10px 0';
+                chatHistory.appendChild(img);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+}); */
