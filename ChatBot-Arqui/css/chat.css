@@ -17,7 +17,7 @@
   background-color: white;
   border-radius: 20px;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   min-height: 600px;
   margin: 30px 20px;
   padding: 30px;
@@ -25,7 +25,7 @@
   
 }
 .container .historial-container .text h1{
-  padding: 10px 100px 10px 20px;
+  padding: 10px 30px 10px 20px;
   border: 1px solid black;
   font-size: 30px;
   font-family: "Montserrat",sans-serif;
@@ -44,7 +44,6 @@
   padding: 20px;
   background-color: #f1f1f1;
   border-right: 1px solid #ccc;
-  overflow-y: auto;
   border-radius: 10px 0 0 10px;
 }
 /* header para le chat*/
