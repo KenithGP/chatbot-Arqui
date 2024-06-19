@@ -84,6 +84,30 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'vista', 'home.vista.html'));
 });
 
+
+
+app.get('/temasmate', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temasmate.vista.html'));
+});
+app.get('/temascomu', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temascomu.vista.html'));
+});
+app.get('/temascs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temascs.vista.html'));
+});
+app.get('/temasct', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temasct.vista.html'));
+});
+app.get('/temasdpcc', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temasdpcc.vista.html'));
+});
+app.get('/temasing', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'temasing.vista.html'));
+});
+
+
+
+
 app.get('/cursos', (req, res) => {
     res.sendFile(path.join(__dirname, 'vista', 'cursos.vista.html'));
 });
