@@ -10,7 +10,7 @@ const dbConnect = new Sequelize({
     username: 'root',
     password: '',
     port: '3306',
-    database: 'bd_chatbot',
+    database: 'chatbot',
     logging: false,
     dialectOptions: process.env.NODE_ENV === 'production'? {
       ssl: {
