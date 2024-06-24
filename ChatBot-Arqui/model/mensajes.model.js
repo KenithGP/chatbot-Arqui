@@ -13,7 +13,7 @@ const mensajes = dbConnect.define('mensajes', {
         allowNull: false,
     },
     id_tema: {
-        type: STRING,
+        type: INTEGER,
         allowNull: false,
     },
     remitente: {
@@ -22,8 +22,12 @@ const mensajes = dbConnect.define('mensajes', {
     },
     mensaje: {
         type: TEXT,
-        allowNull: false,
+        allowNull: true,
     },
+    imageUrl: {
+        type: STRING,
+        allowNull: true,
+    }
 });
 
 module.exports = mensajes;

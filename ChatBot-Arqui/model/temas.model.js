@@ -19,6 +19,10 @@ const temas = dbConnect.define('temas', {
         key: 'id_curso',
     }
   },
+  grado: {
+    type: INTEGER,
+    allowNull: false,
+  },
   titulo: {
     type: STRING,
     allowNull: false,

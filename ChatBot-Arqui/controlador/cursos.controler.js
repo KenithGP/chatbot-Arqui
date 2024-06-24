@@ -1,5 +1,4 @@
 let studentData = {};
-
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         const response = await fetch('/student-info');
@@ -8,13 +7,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         studentData = await response.json();
-        updateStudentInfo(studentData);
+        document.getElementById('student-name').textContent = `${studentData.nombres} ${studentData.apellidos}`;
+        
+        const birthDate = new Date(studentData.fecha_nacimiento);
+        const ageDifMs = Date.now() - birthDate.getTime();
+        const ageDate = new Date(ageDifMs);
+        const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-        const courses = document.querySelectorAll('.course');
-        courses.forEach(course => {
-            course.addEventListener('click', function() {
-                const courseName = course.getAttribute('data-course');
-                redirectToTopics(courseName);
+        document.getElementById('student-age').textContent = age;
+        document.getElementById('student-grade').textContent = studentData.grado;
+        document.getElementById('student-email').textContent = studentData.email;
+
+        document.querySelectorAll('.course').forEach(courseElement => {
+            courseElement.addEventListener('click', function () {
+                const courseName = this.getAttribute('data-course');
+                openCourseModal(courseName);
             });
         });
 
@@ -31,71 +38,75 @@ async function loadTopics(courseName, courseElement) {
         }
 
         const topics = await response.json();
-        renderTopicsMenu(courseElement, topics);
+        console.log(topics);
+
+        const topicsContainer = courseElement.querySelector('.topics-container');
+        if (!topicsContainer) {
+            const newContainer = document.createElement('div');
+            newContainer.classList.add('topics-container');
+            courseElement.appendChild(newContainer);
+        } else {
+            topicsContainer.innerHTML = '';
+        }
+
+        topics.forEach(topic => {
+            const topicButton = document.createElement('button');
+            topicButton.classList.add('topic-button');
+            topicButton.textContent = topic.titulo;
+            topicButton.addEventListener('click', function () {
+                const selectedTema = topic.titulo;
+                showOptionsModal(selectedTema);
+            });
+            topicsContainer.appendChild(topicButton);
+        });
 
     } catch (error) {
         console.error('Error al obtener los temas: ', error);
     }
 }
 
-function updateStudentInfo(studentData) {
-    document.getElementById('student-name').textContent = `${studentData.nombres} ${studentData.apellidos}`;
-    const age = calculateAge(studentData.fecha_nacimiento);
-    document.getElementById('student-age').textContent = age;
-    document.getElementById('student-grade').textContent = studentData.grado;
-    document.getElementById('student-email').textContent = studentData.email;
+function openCourseModal(courseName) {
+    const modal = document.getElementById('course-modal');
+    const courseElement = modal.querySelector('.modal-content');
+    modal.style.display = 'block';
+    loadTopics(courseName, courseElement);
+
+    const closeButton = modal.querySelector('.close');
+    closeButton.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
 }
 
-function calculateAge(birthDateStr) {
-    const birthDate = new Date(birthDateStr);
-    const ageDifMs = Date.now() - birthDate.getTime();
-    const ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-}
+function showOptionsModal(selectedTema) {
+    const optionsModal = document.getElementById('options-modal');
+    optionsModal.style.display = 'block';
 
-function redirectToTopics(courseName) {
-    switch (courseName) {
-        case 'MATEMÁTICA':
-            window.location.href = '/temas.vista.html?curso=matematica';
-            break;
-        case 'CIENCIA Y TECNOLOGÍA':
-            window.location.href = '/temas.vista.html?curso=ciencia';
-            break;
-        case 'CIENCIAS SOCIALES':
-            window.location.href = '/temas.vista.html?curso=sociales';
-            break;
-        case 'INGLÉS':
-            window.location.href = '/temas.vista.html?curso=ingles';
-            break;
-        case 'DPCC':
-            window.location.href = '/temas.vista.html?curso=dpcc';
-            break;
-        default:
-            console.log('Curso no encontrado:', courseName);
-            break;
-    }
-}
+    const chatButton = optionsModal.querySelector('#chat-button');
+    const evaluationButton = optionsModal.querySelector('#evaluation-button');
+    const selectedGrade = studentData.grado;
 
-function renderTopicsMenu(courseElement, topics) {
-    let selectElement = courseElement.querySelector('.topics-menu');
-    if (!selectElement) {
-        selectElement = document.createElement('select');
-        selectElement.classList.add('topics-menu');
-        courseElement.appendChild(selectElement);
-    } else {
-        selectElement.innerHTML = '';
-    }
+    chatButton.onclick = function() {
+        window.location.href = `/chat?Grado=${selectedGrade}&Tema=${selectedTema}`;
+    };
 
-    topics.forEach(topic => {
-        const option = document.createElement('option');
-        option.value = topic.titulo;
-        option.textContent = topic.titulo;
-        selectElement.appendChild(option);
-    });
+    evaluationButton.onclick = function() {
+        window.location.href = `/evaluacion?Grado=${selectedGrade}&Tema=${selectedTema}`;
+    };
 
-    selectElement.addEventListener('change', function() {
-        const selectedTema = this.value;
-        const selectedGrade = studentData.grado;
-        window.location.href = `/chat.html?Grado=${selectedGrade}&Tema=${selectedTema}`;
-    });
+    const closeButton = optionsModal.querySelector('.close');
+    closeButton.onclick = function() {
+        optionsModal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == optionsModal) {
+            optionsModal.style.display = 'none';
+        }
+    };
 }
