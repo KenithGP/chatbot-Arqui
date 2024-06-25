@@ -168,4 +168,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 });
+document.getElementById('redirectButton').addEventListener('click', function() {
+    window.location.href = '/cursos';
+});
 

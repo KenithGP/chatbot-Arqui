@@ -110,3 +110,7 @@ function showOptionsModal(selectedTema) {
         }
     };
 }
+
+document.getElementById('homeLogo').addEventListener('click', function() {
+    window.location.href = '/';
+});

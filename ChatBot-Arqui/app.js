@@ -110,6 +110,9 @@ app.get('/chat', requireLogin, (req, res) => {
 app.get('/evaluacion', requireLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'vista', 'evaluacion.vista.html'));
 })
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'vista', 'home.vista.html'));
+});
 
 let grado;
 
