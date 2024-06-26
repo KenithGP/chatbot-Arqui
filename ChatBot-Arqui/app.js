@@ -110,9 +110,6 @@ app.get('/chat', requireLogin, (req, res) => {
 app.get('/evaluacion', requireLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'vista', 'evaluacion.vista.html'));
 })
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'vista', 'home.vista.html'));
-});
 
 let grado;
 
@@ -315,7 +312,7 @@ server.listen(9000, () => {
 
 
 app.get('/api/youtube/videos', async (req, res) => {
-    const { query } = req.query;
+    const { query, pageToken } = req.query;
 
     const youtube = google.youtube({
         version: 'v3',
@@ -328,7 +325,8 @@ app.get('/api/youtube/videos', async (req, res) => {
             q: query,
             type: 'video',
             maxResults: 5,  // Número máximo de videos a devolver
-            order: 'relevance'  // Orden de relevancia
+            order: 'relevance',  // Orden de relevancia
+            pageToken: pageToken || '' // Token para la siguiente página
         });
 
         const videos = response.data.items.map(item => ({
@@ -337,7 +335,10 @@ app.get('/api/youtube/videos', async (req, res) => {
             thumbnail: item.snippet.thumbnails.default.url
         }));
 
-        res.json(videos);
+        res.json({
+            videos,
+            nextPageToken: response.data.nextPageToken // Devuelve el token para la siguiente página
+        });
     } catch (error) {
         console.error('Error al buscar videos en YouTube:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
