@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const youtubeVideosDiv = document.getElementById('youtube-videos');
 
     let initialMessage = '';
+    let nextPageToken = '';
+    let displayedVideoIds = new Set();
 
     if (grado && tema) {
         if (isEvaluation) {
@@ -146,9 +148,15 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function searchYouTubeVideos(topic) {
         try {
-            const response = await fetch(`/api/youtube/videos?query=${encodeURIComponent(topic)}`);
-            const videos = await response.json();
-            return videos;
+            const response = await fetch(`/api/youtube/videos?query=${encodeURIComponent(topic)}&pageToken=${nextPageToken}`);
+            const data = await response.json();
+
+            nextPageToken = data.nextPageToken; // Actualiza el token para la siguiente página de resultados
+
+            const uniqueVideos = data.videos.filter(video => !displayedVideoIds.has(video.id));
+            uniqueVideos.forEach(video => displayedVideoIds.add(video.id)); // Agrega los nuevos videos al set
+
+            return uniqueVideos;
         } catch (error) {
             console.error('Error al buscar videos en YouTube:', error);
             return [];
@@ -168,7 +176,3 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 });
-document.getElementById('redirectButton').addEventListener('click', function() {
-    window.location.href = '/cursos';
-});
-
