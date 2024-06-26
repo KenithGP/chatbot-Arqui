@@ -14,14 +14,14 @@ html, body {
   align-items: center;
 }
 
-.container .historial-container {
-  display: flex;
+ .historial-container {
   flex-direction: column; /* Cambiado a column para alinear verticalmente */
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
+  overflow-y:hidden;
   width: 100%;
   max-width: 400px;
-  min-height: 600px;
+  height: 84%;
   margin: 30px 20px;
   padding: 30px;
   border: 3px solid black;
@@ -42,29 +42,22 @@ html, body {
   color: rgb(255, 255, 255);
 }
 
-.historial-container {
-  flex: 1;
-  padding: 20px;
-  border-right: 1px solid #ccc;
-  height: 84%; /* Utiliza toda la altura disponible */
-  background-color: rgb(255, 255, 255);
-  overflow-y: auto;
-  border-radius: 10px 0 0 10px;
+.historial-container img{
+  width: 400px;
+  height: 400px;
+  margin-top: 40px;
 }
 
 .historial-container button {
+  margin-top: 200px;
   padding: 7px 20px;
   width: 400px;
   height: 40px;
-  margin: 0 10px;
   border: none;
   background-color: #007bff;
   color: white;
   border-radius: 10px;
   cursor: pointer;
-  position: relative;
-  top: 630px;  /* Mueve el botón 10px hacia abajo desde su posición original */
-  right: 10px;
 }
 
 .historial-container button:hover {
@@ -145,7 +138,7 @@ html, body {
   margin-left: auto;
   padding: 25px;
   text-align: right;
-  background: #1e5eac;
+  background: #007bff;
   color: #000000;
   font-style: 1.1em;
   border-radius: 10px;
@@ -247,4 +240,77 @@ input[type="text"]:focus {
   outline: none;
   box-shadow: none;
   border-color: none; /* Color del borde cuando está en foco */
+}
+/* Media queries para responsividad en ancho y alto */
+@media (max-width: 1200px), (max-height: 900px) {
+  .container {
+  display: flex;
+  }
+ 
+  .historial-container button{
+    margin-top: 90px;
+  }
+
+  .chat-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 768px), (max-height: 720px) {
+  .historial-container button {
+    margin-top: 40px;
+  }
+  .container .historial-container .text h1 {
+    padding: 10px 20px;
+    font-size: 24px;
+  }
+
+  .container .historial-container .text h2 {
+    font-size: 18px;
+  }
+
+  .chat-container .header .right .name {
+    font-size: 1.1em;
+  }
+
+  .chat-container .header .right .status {
+    font-size: 0.7em;
+  }
+
+  .bot-message, .user-message {
+    padding: 15px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px), (max-height: 480px) {
+  .historial-container{
+    height: 76%;
+  }
+  .historial-container button {
+    top: 220px;
+    margin-top: 10px;
+  }
+  .container .historial-container .text h1 {
+    font-size: 20px;
+  }
+
+  .container .historial-container .text h2 {
+    font-size: 16px;
+  }
+
+  .chat-container .header .right .name {
+    font-size: 1em;
+  }
+
+  .chat-container .header .right .status {
+    font-size: 0.6em;
+  }
+
+  .bot-message, .user-message {
+    padding: 10px;
+    font-size: 0.9em;
+  }
 }
