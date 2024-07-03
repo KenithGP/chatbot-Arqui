@@ -139,13 +139,14 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
     const { nombres, apellidos, nacimiento, email, password, grado, genero } = req.body;
-    // console.log(req.body)
+     console.log(req.body)
 
     try {
         const user = await users.create({
             email: email,
             password: password
         });
+        console.log(user)
         
         await students.create({
             nombres,

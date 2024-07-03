@@ -7,7 +7,7 @@ const users = dbConnect.define('users', {
     primaryKey: true,
     type: INTEGER,
     autoIncrement: true,
-    allowNull: false
+    allowNull: true
   },
   email: {
     type: STRING,
