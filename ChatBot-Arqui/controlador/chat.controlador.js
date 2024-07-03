@@ -25,7 +25,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                 console.error('Error al obtener respuesta del bot:', error);
             });
         } else {
-            initialMessage = `Hola, necesito información sobre el tema ${tema} para el grado ${grado}.`;
+            initialMessage = `
+                    <h2>Información sobre el tema: ${tema}</h2>
+                    <p>Grado: ${grado}</p>
+                    <p>Por favor, mantén un formato entendible y ordenado, manteniendo los espacios necesarios para que los pueda entender un niño de nivel primaria.</p>
+                    <p>A continuación, algunas instrucciones específicas:</p>
+                    <ul>
+                        <li>Usa títulos claros y concisos y explica el tema de manera breve y entendible.</li>
+                        <li>Incluye ejemplos 5 ejemplos usando correctamente los signos que corresponden al tema </li>
+                    </ul>`;
 
             const previousMessages = await loadPreviousMessages(tema);
             previousMessages.forEach(message => {
@@ -96,11 +104,17 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-    async function loadPreviousMessages(topic) {
+    async function loadPreviousMessages(topic, isEvaluation) {
         try {
             const response = await fetch(`/api/chat/messages?topic=${encodeURIComponent(topic)}`);
             const messages = await response.json();
-            return messages;
+            return messages.filter(message => {
+                if (isEvaluation) {
+                    return message.mensaje.includes('evaluación');
+                } else {
+                    return !message.mensaje.includes('evaluación');
+                }
+            });
         } catch (error) {
             console.error('Error al cargar mensajes previos:', error);
             return [];
