@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const chatWindow = document.getElementById('chat-window');
     const courseName = document.getElementById('name-course');
     const youtubeVideosDiv = document.getElementById('youtube-videos');
+   
 
     let initialMessage = '';
     let nextPageToken = '';
@@ -25,10 +26,11 @@ document.addEventListener('DOMContentLoaded', async function () {
                 console.error('Error al obtener respuesta del bot:', error);
             });
         } else {
+
             initialMessage = `
                     <h2>Información sobre el tema: ${tema}</h2>
                     <p>Grado: ${grado}</p>
-                    <p>Por favor, mantén un formato entendible y ordenado, manteniendo los espacios necesarios para que los pueda entender un niño de nivel primaria.</p>
+                    <p>Por favor, mantén un formato entendible y ordenado, manteniendo los espacios necesarios para que los pueda entender un niño de nivel primaria y si es posible usar emojis.</p>
                     <p>A continuación, algunas instrucciones específicas:</p>
                     <ul>
                         <li>Usa títulos claros y concisos y explica el tema de manera breve y entendible.</li>
