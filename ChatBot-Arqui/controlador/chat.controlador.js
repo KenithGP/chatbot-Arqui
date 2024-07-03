@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (grado && tema) {
         if (isEvaluation) {
-            initialMessage = `Hola, soy un alumno y quiero tomar una evaluación sobre el tema ${tema} para el grado ${grado}. En donde la nota máxima que puedo sacar sea 20`;
+            initialMessage = `Hola, necesito que me hagas una evaluación sobre el tema ${tema} para el grado ${grado}. La nota máxima que puedo sacar es 20 y la evaluación debe tener 10 preguntas. Por favor, hazlo en un formato de evaluación con cada pregunta numerada y separada por una líneas en blanco, sin darme las respuestas hasta que termine.`;
 
             getBotResponse(initialMessage, tema).then(botResponse => {
                 appendMessage('bot', botResponse);
